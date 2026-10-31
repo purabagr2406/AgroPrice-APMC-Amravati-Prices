@@ -1,0 +1,33 @@
+{
+  "name": "amravati-apmc-rates",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "seed": "tsx scripts/seed.ts",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@next/env": "^15.5.28",
+    "bcryptjs": "^2.4.3",
+    "jose": "^5.9.6",
+    "mongoose": "^8.12.1",
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^9.22.0",
+    "eslint-config-next": "^15.2.3",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
