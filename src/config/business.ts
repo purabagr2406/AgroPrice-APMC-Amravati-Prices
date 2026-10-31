@@ -8,6 +8,7 @@ export const business = {
   shopTaglineEn: "Grain & Soybean Commission Agent Shop",
   contactName: "Satish Bhikamchand Agrawal",
   phone: "9823245485",
+  email : "satishagrawal754@fmail.com",
   whatsapp: "919823245485",
   addressMr: "दुकान नं. ई-११, नवीन धान्य मार्केट, अमरावती.",
   addressEn: "Shop No. E-11, New Cotton Market, Amravati.",
