@@ -94,7 +94,7 @@ The public pages and owner dashboard support English and Marathi using the langu
 
 ### Install AgroPrice as a PWA
 
-The app includes a web manifest, SVG and 192/512 PNG install icons, service-worker registration, static asset caching, and an offline fallback page. The live rates, admin pages, and enquiries are not cached offline because they need current, private, or database-backed data. Service workers require HTTPS in production; localhost is supported for local testing.
+The app includes a web manifest, SVG and 192/512 PNG install icons, a registered service worker with static asset caching and an offline fallback page, plus mobile and desktop screenshots for install showcases. The live rates, admin pages, and enquiries are not cached offline because they need current, private, or database-backed data. Related native apps are not preferred. Service workers require HTTPS in production; localhost is supported for local testing.
 
 On a deployed HTTPS site, customers can install AgroPrice from their browser menu (for example, **Install app** or **Add to Home Screen**). On iPhone, use Safari's **Share → Add to Home Screen**.
 

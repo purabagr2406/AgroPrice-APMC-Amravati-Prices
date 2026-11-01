@@ -5,7 +5,7 @@ export const business = {
   shopNameMr: "भिकमचंद हरीराम अग्रवाल",
   shopNameEn: "Bhikamchand Hariram Agrawal",
   shopTaglineMr: "धान्य व सोयाबीन अडत दुकान",
-  shopTaglineEn: "Grain & Soybean Commission Agent Shop",
+  shopTaglineEn: "Grains & Soybean Commission Agent Shop",
   contactName: "Satish Bhikamchand Agrawal",
   phone: "9823245485",
   email : "satishagrawal754@fmail.com",
