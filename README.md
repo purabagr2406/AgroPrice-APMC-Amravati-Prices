@@ -122,3 +122,5 @@ The Render free service can sleep while idle and have a cold start when it wakes
 - **Product and shop details** (AgroPrice branding, shop name, address, phone, and WhatsApp) are grouped in `src/config/business.ts`.
 
 This is a learning-project starting point. Use strong, unique passwords and keep environment secrets private. Crop management, editable business details, CSV export, and PWA support are not included yet.
+
+test
