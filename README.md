@@ -74,7 +74,9 @@ Generate a password hash from the terminal:
 node -e "require('bcryptjs').hash('Choose-a-long-unique-password', 12).then(console.log)"
 ```
 
-Paste the printed hash into `ADMIN_PASSWORD_HASH`, escaping every `$` as `\$` in `.env.local` so Next.js does not interpret the hash as environment-variable expansion. Do not store the original password in source code or commit `.env.local`; the `.gitignore` already excludes it.
+Paste the printed hash into `ADMIN_PASSWORD_HASH`, escaping every `$` as `\$` only when placing it in `.env.local` so Next.js does not interpret the hash as environment-variable expansion. Do not store the original password in source code or commit `.env.local`; the `.gitignore` already excludes it.
+
+For Vercel, add `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH`, `SESSION_SECRET`, `MONGODB_URI`, and `NEXT_PUBLIC_SITE_URL` in **Project Settings → Environment Variables**. Paste the bcrypt hash exactly as generated, with no backslashes before its `$` characters, and enable it for the Production environment. After changing environment variables, redeploy the production deployment for the changes to take effect. Never share or commit these values.
 
 ### 4. Install packages, seed crops, and run
 
@@ -89,6 +91,23 @@ npm run dev
 Visit `http://localhost:3000`, `/rates` for all rates, `/enquiries` to send a farmer enquiry, and `/admin/login` to manage rates and enquiries. Rates display each crop with its per-quintal price range.
 
 The public pages and owner dashboard support English and Marathi using the language control in the header. Rate history is available by date for the latest 90 days. Older rates are removed by a MongoDB TTL index, with a request-time cleanup for records created before TTL expiry was added.
+
+### Install AgroPrice as a PWA
+
+The app includes a web manifest, SVG and 192/512 PNG install icons, service-worker registration, static asset caching, and an offline fallback page. The live rates, admin pages, and enquiries are not cached offline because they need current, private, or database-backed data. Service workers require HTTPS in production; localhost is supported for local testing.
+
+On a deployed HTTPS site, customers can install AgroPrice from their browser menu (for example, **Install app** or **Add to Home Screen**). On iPhone, use Safari's **Share → Add to Home Screen**.
+
+### Package AgroPrice with PWABuilder
+
+1. Deploy AgroPrice to an HTTPS URL first. PWABuilder cannot package the local `localhost` address for customers.
+2. Open [PWABuilder](https://www.pwabuilder.com/) and enter the deployed website URL.
+3. Run the site analysis. Check the manifest and service-worker results; resolve any report issues and scan the live URL again.
+4. Open **Package for Stores** and select **Android** to generate a Trusted Web Activity package. Enter the Android application/package ID and app name, then create or provide a signing key. Keep the signing key and passwords private and backed up; losing them can prevent publishing future app updates.
+5. Download the package and test it on an Android device before submitting it to Google Play. Store publication requires a Play Console account and must meet Google's current developer and app policies.
+6. PWABuilder also offers platform-specific packaging options. Review the current platform requirements in its package flow; iOS distribution requires Apple's tooling, signing, and developer account rather than an Android APK.
+
+Packaging through PWABuilder does not itself publish the app to a store. For sharing a link with customers, the HTTPS website is sufficient; app-store publication is optional.
 
 ### 5. Publish market price ranges
 
@@ -121,6 +140,4 @@ The Render free service can sleep while idle and have a cold start when it wakes
 - **Farmer enquiries** are submitted through a validated Server Action and are visible only in the authenticated admin inbox.
 - **Product and shop details** (AgroPrice branding, shop name, address, phone, and WhatsApp) are grouped in `src/config/business.ts`.
 
-This is a learning-project starting point. Use strong, unique passwords and keep environment secrets private. Crop management, editable business details, CSV export, and PWA support are not included yet.
-
-test
+Use strong, unique passwords and keep environment secrets private. Editable business details and CSV export are not included yet.
